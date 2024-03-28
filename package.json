@@ -1,0 +1,18 @@
+{
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-compile-handlebars": "^0.6.1",
+    "gulp-rename": "^2.0.0",
+    "markdown-it": "^14.1.0",
+    "pegjs": "^0.10.0"
+  },
+  "name": "romani",
+  "version": "1.0.0",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

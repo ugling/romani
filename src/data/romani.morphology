@@ -1,0 +1,42 @@
+
+# Declension
+
+## Layer II case markers
+
+{ke} @inherited == DAT
+
+
+# Verbal conjugation
+
+## Present (non-perfect)
+
+{av} @inherited == 1SG
+
+{es} @inherited == 2SG
+
+{el} @inherited: -(a)ti @ == 3SG
+
+Affixes ending in /s/ are debuccalized before a vowel of a following suffix.
+
+
+## Perfect stem
+
+{d#perf} @inherited == PERF
+
+
+## Perfect and copula
+
+Perfect conjugation has a distinct set of affixes. Most of them are palatalizing. 
+
+{ʲa#perf3sg} @inherited == 3SG
+
+The markers for first and second person are used for present tense of copula.
+
+
+## Adaptation
+
+Loaned verbs have a special adaptation marker indicating their loanword status.
+The affix is absent in a participle (that has a special suffix for loaned verbs).
+
+{in} @greek XEN
+

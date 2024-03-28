@@ -1,0 +1,19 @@
+<dl>
+{{#each entries}}
+    {{#if headword}}
+        <dt>
+            <strong>{{headword.form}}</strong>
+            <span>{{etym.source}}</span>
+        </dt>
+        <dd>
+            {{#each dfs}}
+                <p>{{term}}</p>
+            {{/each}}
+        </dd>
+    {{else}}
+        </dl>
+        {{{text}}}
+        <dl>
+    {{/if}}
+{{/each}}
+</dl>

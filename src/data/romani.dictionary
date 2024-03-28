@@ -1,0 +1,34 @@
+
+# První kapitola
+
+{[phen]el} (V,OIK)
+    =cs říci
+    =en tell
+    @inherited
+
+{[da]j} (N,OIK,F,ANIM,J)
+    =cs matka
+    =en mother
+    @inherited
+
+{[muš]inel} (V,XEN)
+    =cs muset
+    =en must
+    @slavic (Both Standard Polish and East Slovak dialects)
+
+{andro} (PREP)
+    =cs v
+    =cs do
+    =en at
+    =en to
+    @inherited
+
+{[škol]a} (N,F,XEN)
+    =cs škola
+    =en school
+    @slavic
+
+{me}
+    =cs já
+    =en I
+    @inherited
