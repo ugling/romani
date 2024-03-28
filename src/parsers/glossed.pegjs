@@ -21,21 +21,19 @@ punct
 keyword
   = first:[a-zA-Z0-9] rest:[a-zA-Z0-9-_.]* { return first + rest.join(''); }
 
-
-
 blocks
   = first:block rest:blocks { return [first].concat(rest); }
   / block:block { return [block]; }
 
 block
-  = (nl / s)* "{" (nl / s)* glossed:glossed (nl / s)* "}" { return { glossed }; }
+  = (nl / s)* "{" (nl / s)* glossed:glossed (nl / s)* "}" (nl / s)* { return { glossed }; }
   / (nl / s)* text:text { return { text }; }
 
 text
   = chars:( !((nl / s)* "{") char:. { return char; })+ { return chars.join(''); }
 
 glossed
-  = first:sentence empty rest:glossed { return [first].concat(rest); }
+  = first:sentence empty s? rest:glossed { return [first].concat(rest); }
   / sentence:sentence { return [sentence]; }
 
 sentence
