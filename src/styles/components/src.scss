@@ -1,0 +1,10 @@
+
+// Colors used to identify source language family
+
+.src {
+    &-inherited { background-color: #fff; }
+
+    &-hungarian { background-color: #ffc; }
+    &-greek { background-color: #fdd; }
+    &-slavic { background-color: #eef; }
+}

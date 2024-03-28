@@ -2,6 +2,8 @@ const { src, dest } = require('gulp');
 const fs = require('fs');
 const rename = require('gulp-rename');
 
+const sass = require('gulp-sass')(require('sass'));
+
 const handlebars = require('gulp-compile-handlebars');
 
 const pegjs = require("pegjs");
@@ -68,6 +70,17 @@ exports.glossed = function() {
         .pipe(rename('sar-me-phiravas-andre-skola.html'))
         .pipe(dest('./dist'));
 };
+
+exports.styles = function() {
+    return src('./src/styles/*.scss')
+        .pipe(sass().on('error', sass.logError))
+        .pipe(dest('./dist/css'));
+};
+
+//exports.watch = function () {
+//    gulp.watch('./sass/**/*.scss', ['sass']);
+//};
+
 
 exports.default = function(cb) {
     // place code for your default task here
