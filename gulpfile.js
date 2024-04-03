@@ -47,6 +47,7 @@ exports.dictionary = function() {
 exports.glossed = function() {
 
     const dictionary = parseFile('./src/data/romani.dictionary', 'dictionary');
+    const morphology = parseFile('./src/data/romani.morphology', 'dictionary');
     const glossed = parseFile('./src/data/sar-me-phiravas-andre-skola.glossed', 'glossed');
 
     // Process all markdown chunks within the glossed text:
@@ -62,6 +63,11 @@ exports.glossed = function() {
             helpers: {
                 lemma: function(morph) {
                     return dictionary.entries.find(function(entry) {
+                        return (entry.headword && entry.headword.key == morph.refs[0]);
+                    });
+                },
+                affix: function(morph) {
+                    return morphology.entries.find(function(entry) {
                         return (entry.headword && entry.headword.key == morph.refs[0]);
                     });
                 }

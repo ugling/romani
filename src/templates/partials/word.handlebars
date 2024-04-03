@@ -4,19 +4,16 @@
         <a class="ann-gloss" href="">xyz</a>
     </span>
 {{else}}
-    {{#with prefix}}
-        <span class="ann-morph src-slavic">
-            <span class="ann-text">{{form}}</span>
-            <a class="ann-gloss" href="">xyz</a>
+    {{#if refs}}
+        <span class="ann-complex">
+            <span class="ann-complex-text">
+                {{> word-structure }}
+            </span>
+            <a href="" class="ann-complex-gloss">
+                {{#each refs}}{{this}}{{/each}}
+            </a>
         </span>
-    {{/with}}
-    {{#with base}}
-        {{> word }}
-    {{/with}}
-    {{#with suffix}}
-        <span class="ann-morph src-slavic">
-            <span class="ann-text">{{form}}</span>
-            <a class="ann-gloss" href="">xyz</a>
-        </span>
-    {{/with}}
+    {{else}}
+        {{> word-structure }}
+    {{/if}}
 {{/with}}

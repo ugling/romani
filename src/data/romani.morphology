@@ -1,34 +1,39 @@
 
 # Declension
 
+## Layer I casemarkers
+
+{a} == NOM-SG @slavic
+
+
 ## Layer II case markers
 
-{ke} @inherited == DAT
+{ke} == DAT @inherited
 
 
 # Verbal conjugation
 
 ## Present (non-perfect)
 
-{av} @inherited == 1SG
+{av} == 1SG @inherited
 
-{es} @inherited == 2SG
+{es} == 2SG @inherited
 
-{el} @inherited: -(a)ti @ == 3SG
+{el} == 3SG @inherited: -(a)ti @
 
-Affixes ending in /s/ are debuccalized before a vowel of a following suffix.
+In North Central Romani, final /s/ of a suffix is debuccalized before a vowel of a following suffix.
 
 
 ## Perfect stem
 
-{d#perf} @inherited == PERF
+{d#perf} == PERF @inherited
 
 
 ## Perfect and copula
 
 Perfect conjugation has a distinct set of affixes. Most of them are palatalizing. 
 
-{ʲa#perf3sg} @inherited == 3SG
+{ʲa#perf3sg} == 3SG @inherited
 
 The markers for first and second person are used for present tense of copula.
 
@@ -38,5 +43,5 @@ The markers for first and second person are used for present tense of copula.
 Loaned verbs have a special adaptation marker indicating their loanword status.
 The affix is absent in a participle (that has a special suffix for loaned verbs).
 
-{in} @greek XEN
+{in} == XEN @greek
 

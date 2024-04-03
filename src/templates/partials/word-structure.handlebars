@@ -1,0 +1,15 @@
+    {{#with prefix}}
+        <span class="ann-morph src-{{#with (affix this)}}{{etym.source}}{{/with}}">
+            <span class="ann-text">{{form}}</span>
+            <a class="ann-gloss" href="">xyz</a>
+        </span>
+    {{/with}}
+    {{#with base}}
+        {{> word }}
+    {{/with}}
+    {{#with suffix}}
+        <span class="ann-morph src-{{#with (affix this)}}{{etym.source}}{{/with}}">
+            <span class="ann-text">{{form}}</span>
+            <a class="ann-gloss" href="">xyz</a>
+        </span>
+    {{/with}}

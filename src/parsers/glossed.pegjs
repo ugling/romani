@@ -13,7 +13,7 @@ s
   = ([ \t] / !empty nl)+
 
 special
-  = "[" / "]" / "|" / "{" / "}" / "&" / "+"
+  = "[" / "]" / "|" / "{" / "}" / "&" / "+" / "#"
 
 punct
   = "..." / "-" /  "," / "." / "!" / "?" / ":" / ";"
@@ -46,7 +46,23 @@ chunk
   / word:word { return { word }; }
 
 word
-  = "[" base:word "]" suffix:morph { return { base, suffix }; }
+  = xword:xword "#" refs:refs { return Object.assign({ refs }, xword); }
+  / xword:xword "#" {
+      let ref = "";
+      const crawl = function(x) {
+        if (x.prefix) { ref += x.prefix.form; }
+        if (x.root) { ref += x.root.form; }
+        if (x.base) { crawl(x.base); }
+        if (x.suffix) { ref += x.suffix.form; }
+      }
+      crawl(xword);
+      return Object.assign({ refs: [ref] }, xword);
+    }
+  / xword:xword { return xword; }
+
+xword
+  = prefix:morph "[" base:word "]" suffix:morph { return { prefix, base, suffix }; }
+  / "[" base:word "]" suffix:morph { return { base, suffix }; }
   / prefix:morph "[" base:word "]" { return { prefix, base }; }
   / root:morph { return { root }; }
 
