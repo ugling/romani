@@ -1,0 +1,7 @@
+{{! affix morph is a simple form with a gloss }}
+{{#with (affix this)}}
+<span class="ann-morph {{#if continued}} ann-continued {{/if}} {{#if continues}} ann-continues {{/if}} src-{{lex.etym.source}}">
+    <span class="ann-text">{{form}}</span>
+    <a class="ann-gloss" href="">{{lex.dfs.0.gram}}</a>
+</span>
+{{/with}}

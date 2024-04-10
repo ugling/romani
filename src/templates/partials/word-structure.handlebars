@@ -1,15 +1,19 @@
-    {{#with prefix}}
-        <span class="ann-morph src-{{#with (affix this)}}{{etym.source}}{{/with}}">
-            <span class="ann-text">{{form}}</span>
-            <a class="ann-gloss" href="">xyz</a>
-        </span>
-    {{/with}}
-    {{#with base}}
-        {{> word }}
-    {{/with}}
-    {{#with suffix}}
-        <span class="ann-morph src-{{#with (affix this)}}{{etym.source}}{{/with}}">
-            <span class="ann-text">{{form}}</span>
-            <a class="ann-gloss" href="">xyz</a>
-        </span>
-    {{/with}}
+{{! The template renderes all possible structures (derived form, compound) linearized into a single string }}
+{{#with prefix}}
+    {{> affix-morph }}
+{{/with}}
+{{#with base}}
+    {{> word }}
+{{/with}}
+{{#with base1}}
+    {{> word }}
+{{/with}}
+{{#with infix}}
+    {{> affix-morph }}
+{{/with}}
+{{#with base2}}
+    {{> word }}
+{{/with}}
+{{#with suffix}}
+    {{> affix-morph }}
+{{/with}}

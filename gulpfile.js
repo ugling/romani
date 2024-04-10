@@ -1,6 +1,8 @@
 const { src, dest } = require('gulp');
 const fs = require('fs');
 const rename = require('gulp-rename');
+const axios = require('axios');
+const { XPath, Xslt, XmlParser } = require('xslt-processor');
 
 const sass = require('gulp-sass')(require('sass'));
 
@@ -25,6 +27,19 @@ const parseFile = function(fileName, syntax) {
     const fileContents = fs.readFileSync(fileName, 'utf8');
 
     return parser.parse(fileContents);
+};
+
+const xsltTransform = function(str, transformName, parameters) {
+
+    const xslt = new Xslt({ parameters });
+    const xmlParser = new XmlParser();
+
+    const xsltText = fs.readFileSync('./src/xslt/' + transformName + '.xslt', 'utf8');
+
+    return xslt.xsltProcess(
+        xmlParser.xmlParse(str),
+        xmlParser.xmlParse(xsltText)
+    );
 };
 
 exports.dictionary = function() {
@@ -62,13 +77,17 @@ exports.glossed = function() {
             batch: ['./src/templates/partials'],
             helpers: {
                 lemma: function(morph) {
-                    return dictionary.entries.find(function(entry) {
-                        return (entry.headword && entry.headword.key == morph.refs[0]);
+                    return Object.assign({}, morph, {
+                        lex: dictionary.entries.find(function(entry) {
+                            return (entry.headword && entry.headword.key == morph.refs[0]);
+                        })
                     });
                 },
                 affix: function(morph) {
-                    return morphology.entries.find(function(entry) {
-                        return (entry.headword && entry.headword.key == morph.refs[0]);
+                    return Object.assign({}, morph, {
+                        lex: morphology.entries.find(function(entry) {
+                            return (entry.headword && entry.headword.key == morph.refs[0]);
+                        })
                     });
                 }
             }
@@ -87,6 +106,14 @@ exports.styles = function() {
 //    gulp.watch('./sass/**/*.scss', ['sass']);
 //};
 
+
+exports.romlex = function() {
+    const lemma = 'avel';
+    return axios.get('http://romani.uni-graz.at/romlex/lex.cgi?st=' + lemma + '&rev=n&cl1=rmce&cl2=en&fi=&pm=fu&ic=y&im=y&wc=')
+        .then(res => {
+            return xsltTransform(res.data, 'romlex-entry', [{ name: "lemma", value: lemma }]);
+        });
+};
 
 exports.default = function(cb) {
     // place code for your default task here

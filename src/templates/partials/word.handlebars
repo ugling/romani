@@ -1,10 +1,14 @@
 {{#with root}}
-    <span class="ann-morph src-{{#with (lemma this)}}{{etym.source}}{{/with}}">
+    {{! Simple root is rendered as a simple morph }}
+    {{#with (lemma this)}}
+    <span class="ann-morph src-{{lex.etym.source}}">
         <span class="ann-text">{{form}}</span>
-        <a class="ann-gloss" href="">xyz</a>
+        <a class="ann-gloss" href="">{{lex.dfs.0.term}}</a>
     </span>
+    {{/with}}
 {{else}}
     {{#if refs}}
+        {{! A complex word with refs should be rendered as a string of morphs with a gloss spanning the whole string }}
         <span class="ann-complex">
             <span class="ann-complex-text">
                 {{> word-structure }}
@@ -14,6 +18,7 @@
             </a>
         </span>
     {{else}}
+        {{! Otherwise, the structure is not represented explicitly by now }}
         {{> word-structure }}
     {{/if}}
 {{/with}}

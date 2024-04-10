@@ -1,12 +1,14 @@
 {
   "devDependencies": {
+    "axios": "^1.6.8",
     "gulp": "^4.0.2",
     "gulp-compile-handlebars": "^0.6.1",
     "gulp-rename": "^2.0.0",
     "gulp-sass": "^5.1.0",
     "markdown-it": "^14.1.0",
     "pegjs": "^0.10.0",
-    "sass": "^1.72.0"
+    "sass": "^1.72.0",
+    "xslt-processor": "^2.3.1"
   },
   "name": "romani",
   "version": "1.0.0",

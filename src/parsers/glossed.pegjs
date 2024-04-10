@@ -46,8 +46,8 @@ chunk
   / word:word { return { word }; }
 
 word
-  = xword:xword "#" refs:refs { return Object.assign({ refs }, xword); }
-  / xword:xword "#" {
+  = construction:construction "#" refs:refs { return Object.assign({ refs }, construction); }
+  / construction:construction "#" {
       let ref = "";
       const crawl = function(x) {
         if (x.prefix) { ref += x.prefix.form; }
@@ -55,15 +55,36 @@ word
         if (x.base) { crawl(x.base); }
         if (x.suffix) { ref += x.suffix.form; }
       }
-      crawl(xword);
-      return Object.assign({ refs: [ref] }, xword);
+      crawl(construction);
+      return Object.assign({ refs: [ref] }, construction);
     }
-  / xword:xword { return xword; }
+  / construction:construction { return construction; }
 
-xword
-  = prefix:morph "[" base:word "]" suffix:morph { return { prefix, base, suffix }; }
-  / "[" base:word "]" suffix:morph { return { base, suffix }; }
-  / prefix:morph "[" base:word "]" { return { prefix, base }; }
+construction
+  = prefix:optmorph "[" base1:word "]" infix:optmorph "[" base2:word "]" suffix:optmorph {
+      if (prefix && suffix || prefix && infix || infix && suffix) {
+        const refs = (prefix || {}).refs || (infix || {}).refs || (suffix || {}).refs;
+        let r = { base1, base2 };
+        if (prefix) { r.prefix = { form: prefix.form, refs, continued: true }; }
+        if (infix)  { r.infix  = { form: infix.form,  refs, continues: !!prefix, continued: !!suffix }; }
+        if (suffix) { r.suffix = { form: suffix.form, refs, continues: true }; }
+        return r;
+      } else {
+        return { prefix, base1, infix, base2, suffix };
+      }
+    }
+  / prefix:optmorph "[" base:word "]" suffix:optmorph {
+      if (prefix && suffix) {
+        const refs = prefix.refs || suffix.refs;
+        return {
+          prefix: { form: prefix.form, refs, continued: true },
+          base,
+          suffix: { form: suffix.form, refs, continues: true }
+        };
+      } else {
+        return { prefix, base, suffix };
+      }
+    }
   / root:morph { return { root }; }
 
 sandhi
@@ -72,6 +93,10 @@ sandhi
 morph
   = form:form "|" refs:refs { return { form, refs }; }
   / form:nonemptyform { return { form, refs: [form] }; }
+
+optmorph
+  = morph:morph { return morph; }
+  / "" { return null; }
 
 form
   = chars:formchar* { return chars.join(''); }
