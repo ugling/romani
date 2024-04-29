@@ -1,0 +1,5 @@
+
+body:not(:has(#lang-filter-cs:checked)) .lang-cs,
+body:not(:has(#lang-filter-en:checked)) .lang-en {
+    display: none;
+}

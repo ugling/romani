@@ -1,9 +1,13 @@
 
 # Declension
 
-## Layer I casemarkers
+## Layer I case markers
 
-{a} == NOM-SG @slavic
+{a} == NOM-SG @greek-slavic
+
+Some markers are clearly distinguishable, but not productive any more.
+
+{e#locI} == LOC @inherited
 
 
 ## Layer II case markers
@@ -17,11 +21,30 @@
 
 {av} == 1SG @inherited
 
+{el} == 3SG @inherited
+
 {es} == 2SG @inherited
 
-{el} == 3SG @inherited: -(a)ti @
+{as} == 1PL @inherited
 
-In North Central Romani, final /s/ of a suffix is debuccalized before a vowel of a following suffix.
+{en}
+    ==*2pl 2PL
+    ==*3pl 3PL
+    @inherited
+
+In North Central Romani, final /s/ of some morphemes (including personal affixes of finite
+verb forms) is debuccalized before a vowel of a following suffix. The /es/ and /as/ thus
+have allomorphs /eh/- and /ah/-.
+
+
+## Future
+
+{a#fut} == FUT
+
+
+## Past
+
+{as#past} == PAST
 
 
 ## Perfect stem
@@ -44,4 +67,24 @@ Loaned verbs have a special adaptation marker indicating their loanword status.
 The affix is absent in a participle (that has a special suffix for loaned verbs).
 
 {in} == XEN @greek
+
+
+## Actionsart
+
+Slavic actionsart prefixes are used with the verbs or deverbal nominal forms,
+including inherited roots.
+The prefixes often modify the meaning of the base verb exactly as in the source Slavic
+language. Examples from Slovak:
+
+ide "goes" : (slnko) zájde "(the sun) will set" 
+::
+džal "goes" : (o kham) zadžal "(the sun) sets"
+
+milovaný "loved" : zamilovaný "(fallen) in love"
+::
+kamado "loved" : zakamado "(fallen) in love"
+
+
+
+{za} == COM @slavic
 

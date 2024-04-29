@@ -59,6 +59,23 @@ exports.dictionary = function() {
         .pipe(dest('./dist'));
 };
 
+exports.morphology = function() {
+
+    const morphology = parseFile('./src/data/romani.morphology', 'dictionary');
+
+    // Process all markdown chunks within the dictionary:
+    morphology.entries.forEach(function(entry) {
+        if (entry.text) {
+            entry.text = md.render(entry.text);
+        }
+    });
+
+    return src('./src/templates/dictionary.handlebars')
+        .pipe(handlebars(morphology, {}))
+        .pipe(rename('morphology.html'))
+        .pipe(dest('./dist'));
+};
+
 exports.glossed = function() {
 
     const dictionary = parseFile('./src/data/romani.dictionary', 'dictionary');
@@ -79,16 +96,25 @@ exports.glossed = function() {
                 lemma: function(morph) {
                     return Object.assign({}, morph, {
                         lex: dictionary.entries.find(function(entry) {
-                            return (entry.headword && entry.headword.key == morph.refs[0]);
+                            return (entry.headword && entry.headword.key == morph.refs[0].key);
                         })
                     });
                 },
                 affix: function(morph) {
                     return Object.assign({}, morph, {
                         lex: morphology.entries.find(function(entry) {
-                            return (entry.headword && entry.headword.key == morph.refs[0]);
+                            return (entry.headword && entry.headword.key == morph.refs[0].key);
                         })
                     });
+                },
+                dfsFiltered: function(dfs, subkey) {
+                    if (subkey) {
+                        return dfs.filter(function(df) {
+                            return (df.subkey == subkey);
+                        });
+                    } else {
+                        return dfs;
+                    }
                 }
             }
         }))

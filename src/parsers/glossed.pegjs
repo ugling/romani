@@ -13,7 +13,7 @@ s
   = ([ \t] / !empty nl)+
 
 special
-  = "[" / "]" / "|" / "{" / "}" / "&" / "+" / "#"
+  = "[" / "]" / "|" / "{" / "}" / "&" / "+" / "#" / "*"
 
 punct
   = "..." / "-" /  "," / "." / "!" / "?" / ":" / ";"
@@ -56,7 +56,7 @@ word
         if (x.suffix) { ref += x.suffix.form; }
       }
       crawl(construction);
-      return Object.assign({ refs: [ref] }, construction);
+      return Object.assign({ refs: [ { key: ref } ] }, construction);
     }
   / construction:construction { return construction; }
 
@@ -92,7 +92,8 @@ sandhi
 
 morph
   = form:form "|" refs:refs { return { form, refs }; }
-  / form:nonemptyform { return { form, refs: [form] }; }
+  / form:nonemptyform "*" subkey:nonemptyform { return { form, refs: [ { subkey, key: form } ] }; }
+  / form:nonemptyform { return { form, refs: [ { key: form } ] }; }
 
 optmorph
   = morph:morph { return morph; }
@@ -107,6 +108,15 @@ nonemptyform
 formchar
   = !punct !special !empty !s char:. { return char; }
 
+
 refs
-  = first:nonemptyform "&" rest:refs { return [first].concat(rest); }
-  / form:nonemptyform { return [form]; }
+  = first:mainref "&" refstail:refstail { return [first].concat(refstail); }
+  / mainref:mainref { return [mainref]; }
+
+refstail
+  = gram:nonemptyform "&" rest:refstail { return [ { gram } ].concat(rest); }
+  / gram:nonemptyform { return [ { gram } ]; }
+
+mainref
+  = key:nonemptyform "*" subkey:nonemptyform { return { key, subkey } }
+  / key:nonemptyform { return { key } }

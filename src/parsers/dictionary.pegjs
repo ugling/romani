@@ -15,7 +15,9 @@ s
 keyword
   = first:[a-zA-Z] rest:[a-zA-Z0-9-_.]* { return first + rest.join(''); }
 
-
+gramword
+  = first:[0-9]+ rest:keyword { return first.join('') + rest; }
+  / keyword:keyword { return keyword; }
 
 entries
   = first:entry empty rest:entries { return [first].concat(rest); }
@@ -44,7 +46,7 @@ chars
   = chars:(!special char:. { return char; })* { return chars.join(''); }
 
 special
-  = "{" / "}" / "[" / "]" / "|" / "#"
+  = "{" / "}" / "[" / "]" / "|" / "#" / "*"
 
 cls
   = first:keyword s? ',' s? rest:cls { return [first].concat(rest); }
@@ -55,9 +57,12 @@ dfs
   / df:df { return [df]; }
 
 df
-  = rel:rel s? lang:keyword s term:term s? "(" s? comment:comment s? ")" { return { rel, lang, term, comment }; }
+  = rel:rel s? "*" s? subkey:gramword s? lang:keyword s term:term s? "(" s? comment:comment s? ")" { return { rel, lang, term, comment, subkey }; }
+  / rel:rel s? lang:keyword s term:term s? "(" s? comment:comment s? ")" { return { rel, lang, term, comment }; }
+  / rel:rel s? "*" s? subkey:gramword s? lang:keyword s term:term { return { rel, lang, term, subkey }; }
   / rel:rel s? lang:keyword s term:term { return { rel, lang, term }; }
-  / "==" s? gram:keyword { return { gram }; }
+  / "==" s? "*" s? subkey:gramword s? gram:gramword { return { gram, subkey }; }
+  / "==" s? gram:gramword { return { gram }; }
 
 rel
   = "<" { return 'hypernym'; }

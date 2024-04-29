@@ -1,6 +1,4 @@
 
-# První kapitola
-
 {[phen]el} (V,OIK)
     =cs říci
     =en tell
@@ -28,7 +26,54 @@
     =en school
     @slavic
 
+{o}
+    == DEF
+    @greek
+
 {me}
     =cs já
     =en I
     @inherited
+
+{tu}
+    =cs ty
+    =en you
+    @inherited
+
+
+{[phir]el} (V,OIK)
+    =cs chodit
+    =en attend
+    @inherited (https://dsal.uchicago.edu/cgi-bin/app/soas_query.py?page=510)
+
+{kher} (N)
+    =cs dům
+    =en house
+    @inherited
+
+{khere} (N)
+    =cs doma
+    =en at home
+    @inherited
+
+{[bid]a} (N)
+    =cs potíže
+    =en trouble
+    @slavic
+
+{[ker]el} (V)
+    =cs dělat
+    @inherited
+
+{[phand]el} (V)
+    =cs zavírat
+    @inherited (https://dsal.uchicago.edu/cgi-bin/app/soas_query.py?page=516)
+
+{[zaphand]el} (V)
+    =cs zavřít
+    @mixed
+
+{bo}
+    =cs protože
+    =en because
+    @slavic
