@@ -4,3 +4,9 @@
         {{gram}}
     </span>
 {{/each}}
+
+{{#each refs}}
+    {{#if @index}}
+        &middot; {{gram}}
+    {{/if}}
+{{/each}}

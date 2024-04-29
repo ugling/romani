@@ -3,7 +3,7 @@
     {{#with (lemma this)}}
     <span class="ann-morph src-{{lex.etym.source}}">
         <span class="ann-text">{{form}}</span>
-        <a class="ann-gloss" href="">{{> gloss-text }}</a>
+        <a class="ann-gloss" href="dictionary-{{refs.0.key}}">{{> gloss-text }}</a>
     </span>
     {{/with}}
 {{else}}
@@ -14,7 +14,7 @@
                 {{> word-structure }}
             </span>
             {{#with (lemma this)}}
-                <a href="" class="ann-complex-gloss src-{{lex.etym.source}}">
+                <a href="dictionary-{{refs.0.key}}" class="ann-complex-gloss src-{{lex.etym.source}}">
                     {{> gloss-text }}
                 </a>
             {{/with}}

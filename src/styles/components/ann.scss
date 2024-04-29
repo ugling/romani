@@ -51,6 +51,9 @@
 .ann-morph:only-child .ann-text {
     text-align: center;
 }
+.ann-sandhi + .ann-word .ann-morph:only-child .ann-text {
+    text-align: left;
+}
 .ann-morph + .ann-morph,
 .ann-morph + .ann-complex,
 .ann-complex + .ann-morph,
@@ -61,7 +64,7 @@
     display: block;
     padding-left: 1px;
     padding-right: 1px;
-    font-size: 30px;
+    font-size: 25px;
     line-height: 1.25;
 }
 .ann-text {
