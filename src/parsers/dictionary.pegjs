@@ -57,9 +57,9 @@ dfs
   / df:df { return [df]; }
 
 df
-  = rel:rel s? "*" s? subkey:gramword s? lang:keyword s term:term s? "(" s? comment:comment s? ")" { return { rel, lang, term, comment, subkey }; }
+  = rel:rel s? lang:keyword s? "*" s? subkey:gramword s term:term s? "(" s? comment:comment s? ")" { return { rel, lang, term, comment, subkey }; }
   / rel:rel s? lang:keyword s term:term s? "(" s? comment:comment s? ")" { return { rel, lang, term, comment }; }
-  / rel:rel s? "*" s? subkey:gramword s? lang:keyword s term:term { return { rel, lang, term, subkey }; }
+  / rel:rel s? lang:keyword s? "*"  s? subkey:gramword s term:term { return { rel, lang, term, subkey }; }
   / rel:rel s? lang:keyword s term:term { return { rel, lang, term }; }
   / "==" s? "*" s? subkey:gramword s? gram:gramword { return { gram, subkey }; }
   / "==" s? gram:gramword { return { gram }; }

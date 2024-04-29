@@ -15,10 +15,10 @@
     @slavic (Both Standard Polish and East Slovak dialects)
 
 {andro} (PREP)
-    =cs v
-    =cs do
-    =en at
-    =en to
+    =cs *at v
+    =cs *to do
+    =en *at at
+    =en *to to
     @inherited
 
 {[škol]a} (N,F,XEN)
