@@ -26,20 +26,28 @@
     =en school
     @slavic
 
+{te}
+    == INF
+
 {o}
     == DEF
     @greek
 
 {me}
-    =cs já
-    =en I
+    == 1SG
     @inherited
 
 {tu}
-    =cs ty
-    =en you
+    == 2SG
     @inherited
 
+{sar}
+    =cs jak
+    =en how
+
+{ča}
+    =cs jenom
+    =en only
 
 {[phir]el} (V,OIK)
     =cs chodit
@@ -77,3 +85,15 @@
     =cs protože
     =en because
     @slavic
+
+{[bar]o}
+    =cs velký
+    =en big
+
+{[šer]o}
+    =cs hlava
+    =en head
+
+{[barešeresker]o}
+    =cs tvrdohlavý
+    =en hard headed

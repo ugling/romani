@@ -15,7 +15,7 @@
             </span>
             {{#with (lemma this)}}
                 <a href="dictionary-{{refs.0.key}}" class="ann-complex-gloss src-{{lex.etym.source}}">
-                    {{> gloss-text }}
+                    <span class="ann-complex-inner">{{> gloss-text }}</span>
                 </a>
             {{/with}}
         </span>

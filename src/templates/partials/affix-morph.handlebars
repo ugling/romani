@@ -1,7 +1,23 @@
-{{! affix morph is a simple form with a gloss }}
-{{#with (affix this)}}
-<span class="ann-morph {{#if continued}} ann-continued {{/if}} {{#if continues}} ann-continues {{/if}} src-{{lex.etym.source}}">
-    <span class="ann-text">{{form}}</span>
-    <a class="ann-gloss" href="morphology-{{refs.0.key}}">{{> gloss-text }}</a>
-</span>
-{{/with}}
+{{#if submorphs}}
+    <span class="ann-complex">
+        <span class="ann-complex-text">
+            {{#each submorphs}}
+                {{> affix-morph }}
+            {{/each}}
+        </span>
+        {{#with (affix this)}}
+            <a class="ann-complex-gloss{{#if continued}} ann-continued {{/if}} {{#if continues}} ann-continues {{/if}} src-{{lex.etym.source}}" href="morphology-{{refs.0.key}}">
+                <span class="ann-complex-inner">{{#if continued}}&hellip;{{else}}{{> gloss-text }}{{/if}}</span>
+            </a>
+        {{/with}}
+    </span>
+
+{{else}}
+    {{! affix morph is a simple form with a gloss }}
+    {{#with (affix this)}}
+        <span class="ann-morph {{#if continued}} ann-continued {{/if}} {{#if continues}} ann-continues {{/if}} src-{{lex.etym.source}}">
+            <span class="ann-text">{{form}}</span>
+            <a class="ann-gloss" href="morphology-{{refs.0.key}}">{{#if continued}}&hellip;{{else}}{{> gloss-text }}{{/if}}</a>
+        </span>
+    {{/with}}
+{{/if}}

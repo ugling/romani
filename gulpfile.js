@@ -115,6 +115,9 @@ exports.glossed = function() {
                     } else {
                         return dfs;
                     }
+                },
+                debug: function(x) {
+                    return JSON.stringify(x);
                 }
             }
         }))

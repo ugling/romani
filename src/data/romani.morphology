@@ -5,6 +5,9 @@
 
 {a} == NOM-SG @greek-slavic
 
+{es#msgo} == OBL
+
+
 Some markers are clearly distinguishable, but not productive any more.
 
 {e#locI} == LOC @inherited
@@ -14,6 +17,7 @@ Some markers are clearly distinguishable, but not productive any more.
 
 {ke} == DAT @inherited
 
+{ker} == GEN @inherited
 
 # Verbal conjugation
 
@@ -35,6 +39,11 @@ Some markers are clearly distinguishable, but not productive any more.
 In North Central Romani, final /s/ of some morphemes (including personal affixes of finite
 verb forms) is debuccalized before a vowel of a following suffix. The /es/ and /as/ thus
 have allomorphs /eh/- and /ah/-.
+
+
+## Infinitive
+
+{el#inf} == INF
 
 
 ## Future
@@ -88,3 +97,8 @@ kamado "loved" : zakamado "(fallen) in love"
 
 {za} == COM @slavic
 
+
+## Compounds
+
+{#bahuvr}
+    == BAHUVR

@@ -13,7 +13,7 @@ s
   = ([ \t] / !empty nl)+
 
 special
-  = "[" / "]" / "|" / "{" / "}" / "&" / "+" / "#" / "*"
+  = "[" / "]" / "|" / "{" / "}" / "&" / "+" / "#" / "*" / "<" / ">" / "/"
 
 punct
   = "..." / "-" /  "," / "." / "!" / "?" / ":" / ";"
@@ -53,6 +53,9 @@ word
         if (x.prefix) { ref += x.prefix.form; }
         if (x.root) { ref += x.root.form; }
         if (x.base) { crawl(x.base); }
+        if (x.base1) { crawl(x.base1); }
+        if (x.infix) { ref += x.infix.form; }
+        if (x.base2) { crawl(x.base2); }
         if (x.suffix) { ref += x.suffix.form; }
       }
       crawl(construction);
@@ -65,9 +68,9 @@ construction
       if (prefix && suffix || prefix && infix || infix && suffix) {
         const refs = (prefix || {}).refs || (infix || {}).refs || (suffix || {}).refs;
         let r = { base1, base2 };
-        if (prefix) { r.prefix = { form: prefix.form, refs, continued: true }; }
-        if (infix)  { r.infix  = { form: infix.form,  refs, continues: !!prefix, continued: !!suffix }; }
-        if (suffix) { r.suffix = { form: suffix.form, refs, continues: true }; }
+        if (prefix) { r.prefix = Object.assign(prefix, { refs, continued: true }); }
+        if (infix)  { r.infix  = Object.assign(infix,  { refs, continues: !!prefix, continued: !!suffix }); }
+        if (suffix) { r.suffix = Object.assign(suffix, { refs, continues: true }); }
         return r;
       } else {
         return { prefix, base1, infix, base2, suffix };
@@ -96,8 +99,14 @@ morph
   / form:nonemptyform { return { form, refs: [ { key: form } ] }; }
 
 optmorph
-  = morph:morph { return morph; }
+  = "<" submorphs:submorphs "#" refs:refs ">" { return { submorphs, refs }; }
+  / "<" submorphs:submorphs ">" { return { submorphs }; }
+  / morph:morph { return morph; }
   / "" { return null; }
+
+submorphs
+  = first:morph "/" rest:submorphs { return [first].concat(rest); }
+  / morph:morph { return [morph]; }
 
 form
   = chars:formchar* { return chars.join(''); }
