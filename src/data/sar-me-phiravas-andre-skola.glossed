@@ -1,8 +1,15 @@
 
+@e e|o&NOM&FEM
+@me me|me&NOM
+
+@khere [kher]e|locI#
+
+@andro-to andr|andro*to
+
 # Sar me phiravas andre škola
 
 {
-    Sar|sar me [[phir]av]as andr|andro*to + e|o&FEM [škol]a
+    Sar|sar @me [[phir]av]as @andro-to + @e [škol]a
 }
 
 Jak jsem chodila do školy 
@@ -12,14 +19,30 @@ Tera Fabiánová
 {
     [[Phen|phen]ď|perf]a|perf3sg [man|me&OBL]ge|ke [mir|me&GEN]i [da]j:
 
-    [[Muš|muš]in]es andr|andro*to + e|o&FEM [škol]a te [phir]el|inf,
-    bo [tr|tu&GEN]e|msgo [dad]es|msgo [[za[phand]#]en*3pl]a|fut.
+    „[[Muš|muš]in]es @andro-to + @e [škol]a te [phir]el|inf,
+    bo [tr|tu&GEN]e|msgo [dad]es|msgo [[za[phand]#]en*3pl]a|fut.“
 }
 
-Maminka řekla
+Maminka řekla:
+„Musíš chodit do školy, nebo nám zavřou tátu.“
 
 {
-    Andr|andro*to + e|o&FEM [škol]a [[phir]eh|es]a|fut tu,
+    [[S|s]am]as @khere pandž čhave, štar čhaja, jekh murš.
+}
+{
+    <Jekh|jekh>[phur]<eder#superl> sas @e phen, avka me, so somas jekh berš pal late.
+}
+{
+    Aľe me [[s]om]as [[zor]al]eder sar oj.
+}
+{
+    The [beng]eder.
+}
+{
+    Ta e daj phenďa:
+}
+{
+    „Andr|andro*to + e|o&NOM&FEM [škol]a [[phir]eh|es]a|fut tu|tu&NOM,
     [[Bar|bar]<e|msgo>[šer]<es|msgo/ker#bahuvr>#barešeresker]i,
-    bo [kher]e|locI# ča [bid]a [ker]es.
+    bo @khere ča [bid]a [ker]es.“
 }

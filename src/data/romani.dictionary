@@ -9,6 +9,10 @@
     =en mother
     @inherited
 
+{[dad]}
+    =cs otec
+    =en father
+
 {[muš]inel} (V,XEN)
     =cs muset
     =en must
@@ -97,3 +101,7 @@
 {[barešeresker]o}
     =cs tvrdohlavý
     =en hard headed
+
+{[jekh]}
+    =cs jeden
+    =en one

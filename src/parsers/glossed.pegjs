@@ -1,4 +1,8 @@
 
+{
+  const stored = {};
+}
+
 start
   = (nl / s)* blocks:blocks (nl / s)* { return { blocks }; }
 
@@ -13,20 +17,21 @@ s
   = ([ \t] / !empty nl)+
 
 special
-  = "[" / "]" / "|" / "{" / "}" / "&" / "+" / "#" / "*" / "<" / ">" / "/"
+  = "[" / "]" / "|" / "{" / "}" / "&" / "+" / "#" / "*" / "<" / ">" / "/" / "@"
 
 punct
-  = "..." / "-" /  "," / "." / "!" / "?" / ":" / ";"
+  = "..." / "-" /  "," / "." / "!" / "?" / ":" / ";" / "„" / "“"
 
 keyword
   = first:[a-zA-Z0-9] rest:[a-zA-Z0-9-_.]* { return first + rest.join(''); }
 
 blocks
-  = first:block rest:blocks { return [first].concat(rest); }
-  / block:block { return [block]; }
+  = first:block rest:blocks { return (first ? [first].concat(rest) : rest); }
+  / block:block { return (block ? [block] : []); }
 
 block
   = (nl / s)* "{" (nl / s)* glossed:glossed (nl / s)* "}" (nl / s)* { return { glossed }; }
+  / (nl / s)* "@" s? keyword:keyword s word:word (nl / s)* { stored[keyword] = word; return null; }
   / (nl / s)* text:text { return { text }; }
 
 text
@@ -62,6 +67,7 @@ word
       return Object.assign({ refs: [ { key: ref } ] }, construction);
     }
   / construction:construction { return construction; }
+  / "@" keyword:keyword { return stored[keyword]; }
 
 construction
   = prefix:optmorph "[" base1:word "]" infix:optmorph "[" base2:word "]" suffix:optmorph {
@@ -80,9 +86,9 @@ construction
       if (prefix && suffix) {
         const refs = prefix.refs || suffix.refs;
         return {
-          prefix: { form: prefix.form, refs, continued: true },
+          prefix: Object.assign(prefix, { refs, continued: true }),
           base,
-          suffix: { form: suffix.form, refs, continues: true }
+          suffix: Object.assign(suffix, { refs, continues: true })
         };
       } else {
         return { prefix, base, suffix };

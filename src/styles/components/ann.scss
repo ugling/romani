@@ -87,7 +87,7 @@
     content: " ";
 }
 .ann-word + .ann-word,
-.ann-punct + .ann-word {
+.ann-punct:not(:first-child) + .ann-word {
     margin-left: 24px
 }
 
