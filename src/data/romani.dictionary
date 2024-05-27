@@ -1,4 +1,33 @@
 
+## Číslovky
+
+{jekh}
+    =cs jeden
+    =en one
+
+{duj}
+    =cs dva
+    =en two
+
+{trin}
+    =cs tři
+    =en three
+
+{štar}
+    =cs čtyři
+    =en four
+
+{pandž}
+    =cs pět
+    =en five
+
+{šov}
+    =cs šest
+    =en six
+
+
+## Netříděné
+
 {[phen]el} (V,OIK)
     =cs říci
     =en tell
@@ -7,11 +36,12 @@
 {[da]j} (N,OIK,F,ANIM,J)
     =cs matka
     =en mother
-    @inherited
+    @iranian (dāē 'mother' Kurdish)
 
 {[dad]}
     =cs otec
     =en father
+    @iranian (dād 'father')
 
 {[muš]inel} (V,XEN)
     =cs muset
@@ -102,6 +132,38 @@
     =cs tvrdohlavý
     =en hard headed
 
-{[jekh]}
-    =cs jeden
-    =en one
+{[phur]o}
+    =cs starý
+    =en old
+
+{ta}
+    =cs tak
+    =en so
+
+{aľe}
+    =cs ale
+    =en but
+    @slavic
+
+{sar}
+    =cs jak
+    =en how
+
+{the}
+    =cs a
+    =en and
+    @inherited
+
+{ča}
+    =cs jenom
+    =en only
+
+{murš}
+    =cs muž
+    =en male
+    @burushaski (*mruža 'self-designation of the Burush' Burushaski)
+
+{zor}
+    =cs síla
+    =en strength
+    @iranian

@@ -3,7 +3,15 @@
 
 ## Layer I case markers
 
-{a} == NOM-SG @greek-slavic
+{o}
+    == NOM-SG
+
+{i}
+    == NOM-SG
+
+{a} == NOM-SG @greek
+
+{e#ob} == OBL
 
 {es#msgo} == OBL
 
@@ -12,14 +20,38 @@ Some markers are clearly distinguishable, but not productive any more.
 
 {e#locI} == LOC @inherited
 
+{al#ablI} == ABL @inherited
+
 
 ## Layer II case markers
 
+These markers are added to the Layer I oblique form.
+
 {ke} == DAT @inherited
+
+{te} == LOC @inherited
+
+{tar} == ABL @inherited
+
+{sa} == INS @inherited
+
+
+Genitive marker follows an oblique, but the resulting
+construction 
 
 {ker} == GEN @inherited
 
+Phonologically the forms vary:
+
+  - /k/ is replaced with /g/ after /n/
+  - /t/ is replaced with /d/ after /n/
+  - /s/ is replaced with /c/ after /n/
+  - In other contexts, /s/ is replaced with /h/. When the oblique form
+    ends with /s/, a single /h/ replaces both of them.
+
+
 # Verbal conjugation
+
 
 ## Present (non-perfect)
 
@@ -108,6 +140,7 @@ kamado "loved" : zakamado "(fallen) in love"
 
 {eder}
     == COMP
+    @iranian
 
 {jekh}
     == SUPERL
